@@ -9,16 +9,19 @@ const schema = buildSchema(`
 `);
 
 const rootValue = {
-    hello: () => 'Hello, world!',
+  hello: () => 'Hello, world!',
 };
 
 const app = express();
-app.use('/graphql', graphqlHTTP({
+app.use(
+  '/graphql',
+  graphqlHTTP({
     schema,
     rootValue,
     graphiql: true,
-}));
+  }),
+);
 
 app.listen(4000, () => {
-    console.log('Server running at http://localhost:4000/graphql');
+  console.log('Server running at http://localhost:4000/graphql');
 });
