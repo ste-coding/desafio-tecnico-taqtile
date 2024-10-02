@@ -16,19 +16,23 @@
   "dependencies": {
     "@apollo/server": "4.11.0",
     "graphql": "16.9.0",
+    "express-graphql": "0.12.0",
     "nodemon": "3.1.7",
     "ts-node": "10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "5.5.4"
   },
   "devDependencies": {
-    "@eslint/js": "^9.11.1",
+    "@eslint/js": "9.11.1",
     "@types/node": "22.7.4",
-    "eslint": "^9.11.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "globals": "^15.10.0",
+    "@typescript-eslint/eslint-plugin": "8.8.0",
+    "@typescript-eslint/parser": "8.8.0",
+    "eslint": "9.11.1",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.2.1",
+    "eslint-plugin-unicorn": "55.0.0",
+    "globals": "15.10.0",
     "prettier": "3.3.3",
     "ts-node-dev": "2.0.0",
-    "typescript-eslint": "^8.8.0"
+    "typescript-eslint": "8.8.0"
   }
 }
