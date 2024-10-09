@@ -1,15 +1,41 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 const typeDefs = `#graphql
+    type User {
+        id: Int!
+        email: String!
+        name: String!
+        createdAt: String!
+    }
+
     type Query {
-    hello: String
+        users: [User!]!
+    }
+
+    type Mutation {
+        createUser(email: String!, name: String!): User!
     }
 `;
 
 const resolvers = {
   Query: {
-    hello: () => 'Hello, world!  :)',
+    users: async () => {
+      return await prisma.user.findMany();
+    },
+  },
+  Mutation: {
+    createUser: async (_: any, args: { email: string; name: string }) => {
+      return await prisma.user.create({
+        data: {
+          email: args.email,
+          name: args.name,
+        },
+      });
+    },
   },
 };
 
