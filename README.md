@@ -1,4 +1,4 @@
-<img src="public/img/annalyze-cover-img.png" width="800" height="180">
+<img src="public/img/annlyze-cover-img.png" width="800" height="180">
 # AnnlyzeAPI
 The name AnnlyzeAPI is a wordplay and a reference to **Shirley Ann Jackson**, a prominent physicist and the first African American woman to earn a doctorate at MIT.
 
