@@ -29,7 +29,7 @@ const resolvers = {
   },
   Mutation: {
     createUser: async (_: any, args: { email: string; name: string }) => {
-      return await prisma.user.create({
+      return prisma.user.create({
         data: {
           email: args.email,
           name: args.name,
