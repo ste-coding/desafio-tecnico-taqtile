@@ -9,7 +9,15 @@ const typeDefs = `#graphql
         id: Int!
         email: String!
         name: String!
+        birthDate: String!
         createdAt: String!
+    }
+
+    input UserInput {
+        name: String!
+        email: String!
+        password: String!
+        birthDate: String!
     }
 
     type Query {
@@ -17,24 +25,39 @@ const typeDefs = `#graphql
     }
 
     type Mutation {
-        createUser(email: String!, name: String!): User!
+        createUser(data: UserInput!): User!
     }
 `;
 
 const resolvers = {
   Query: {
     users: async () => {
-      return await prisma.user.findMany();
+      return prisma.user.findMany();
     },
   },
   Mutation: {
-    createUser: async (_: any, args: { email: string; name: string }) => {
-      return prisma.user.create({
+    createUser: async (
+      _: any,
+      args: { data: { name: string; email: string; password: string; birthDate: string } },
+    ) => {
+      const { name, email, birthDate, password } = args.data;
+
+      const newUser = await prisma.user.create({
         data: {
-          email: args.email,
-          name: args.name,
+          email,
+          name,
+          birthDate: new Date(birthDate),
+          password,
         },
       });
+
+      return {
+        id: newUser.id,
+        name: newUser.name,
+        email: newUser.email,
+        birthDate: newUser.birthDate,
+        createdAt: newUser.createdAt,
+      };
     },
   },
 };
